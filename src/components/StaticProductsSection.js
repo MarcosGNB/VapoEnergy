@@ -1,4 +1,4 @@
-/*import React, { useState, useMemo, useEffect } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import ProductCard from './ProductCard';
 
@@ -219,25 +219,6 @@ const StaticProductsSection = () => {
             <p className="text-gray-400">Intenta ajustar tus filtros de búsqueda</p>
           </motion.div>
         )}
-      </div>
-    </section>
-  );
-};
-
-export default StaticProductsSection;
-*/
-
-
-import React from 'react';
-
-const StaticProductsSection = () => {
-  return (
-    <section className="py-12 bg-gray-100">
-      <div className="container mx-auto px-4">
-        <h2 className="text-3xl font-bold text-center mb-8">Productos Disponibles</h2>
-        <div className="bg-white p-8 rounded-lg shadow-md">
-          <p className="text-center text-gray-600">Sección de productos estáticos - En construcción</p>
-        </div>
       </div>
     </section>
   );
