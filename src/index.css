@@ -9,3 +9,12 @@
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
+/* Transiciones personalizadas */
+.transition-smooth {
+  transition: all 0.3s ease-in-out;
+}
+
+/* Estilos para lazy-load */
+.lazy-load-image-background {
+  @apply w-full h-full;
+}
