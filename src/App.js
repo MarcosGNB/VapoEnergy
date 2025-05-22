@@ -16,7 +16,7 @@ const App = () => {
   const locations = [
     {
       title: 'Sucursal Caacupé',
-      mapUrl: 'https://www.google.com/maps/place/Caacup%C3%A9/@-25.38874,-57.1884881,13z/data=!3m1!4b1!4m6!3m5!1s0x945c32f8a18019d1:0xc81a1185bc4fb6fd!8m2!3d-25.3888102!4d-57.1492272!16zL20vMDZ4aDVj?entry=ttu&g_ep=EgoyMDI1MDUxNS4xIKXMDSoASAFQAw%3D%3D',
+      mapUrl: 'https://www.google.com/maps/place/Vapo+Energy/@-25.3938802,-57.1349863,17z/data=!3m1!4b1!4m6!3m5!1s0x945c3327805d9287:0x14a455ea58e35573!8m2!3d-25.3938851!4d-57.1324114!16s%2Fg%2F11mclls9lq?entry=ttu&g_ep=EgoyMDI1MDUxNS4xIKXMDSoASAFQAw%3D%3D',
     },
     {
       title: 'Sucursal Ypacaraí',
