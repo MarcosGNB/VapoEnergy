@@ -101,6 +101,7 @@ const StaticProductsSection = () => {
       isFeatured: true,
       isNew: true
     },
+    
   ];
 
   const filteredProducts = useMemo(() => {
