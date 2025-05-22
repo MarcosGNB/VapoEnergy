@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useEffect } from 'react';
+/*import React, { useState, useMemo, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import ProductCard from './ProductCard';
 
@@ -83,7 +83,7 @@ const StaticProductsSection = () => {
   return (
     <section className="py-16 px-4 sm:px-6 bg-gray-50">
       <div className="max-w-7xl mx-auto">
-        {/* Encabezado con buscador */}
+       
         <div className="mb-12 text-center">
           <motion.h2 
             initial={{ opacity: 0, y: 20 }}
@@ -113,10 +113,10 @@ const StaticProductsSection = () => {
           </div>
         </div>
 
-        {/* Filtros y controles */}
+       
         <div className="mb-10">
           <div className="flex flex-wrap items-center justify-between gap-4 mb-6">
-            {/* Filtros por categoría */}
+         
             <div className="flex flex-wrap gap-2">
               {categories.map(category => (
                 <motion.button
@@ -135,7 +135,7 @@ const StaticProductsSection = () => {
               ))}
             </div>
 
-            {/* Selector de ordenación */}
+         
             <div className="flex items-center gap-2">
               <label htmlFor="sort" className="text-sm font-medium text-gray-700">Ordenar por:</label>
               <select
@@ -151,7 +151,7 @@ const StaticProductsSection = () => {
             </div>
           </div>
 
-          {/* Rango de precios */}
+       
           <div className="mb-6">
             <div className="flex justify-between mb-2">
               <span className="text-sm font-medium text-gray-700">Rango de precios</span>
@@ -178,14 +178,14 @@ const StaticProductsSection = () => {
           </div>
         </div>
 
-        {/* Resultados */}
+      
         <div className="mb-8">
           <p className="text-gray-600">
             Mostrando <span className="font-bold">{filteredProducts.length}</span> productos
           </p>
         </div>
 
-        {/* Grid de productos con animaciones */}
+       
         {filteredProducts.length > 0 ? (
           <motion.div 
             layout
@@ -219,6 +219,25 @@ const StaticProductsSection = () => {
             <p className="text-gray-400">Intenta ajustar tus filtros de búsqueda</p>
           </motion.div>
         )}
+      </div>
+    </section>
+  );
+};
+
+export default StaticProductsSection;
+*/
+
+
+import React from 'react';
+
+const StaticProductsSection = () => {
+  return (
+    <section className="py-12 bg-gray-100">
+      <div className="container mx-auto px-4">
+        <h2 className="text-3xl font-bold text-center mb-8">Productos Disponibles</h2>
+        <div className="bg-white p-8 rounded-lg shadow-md">
+          <p className="text-center text-gray-600">Sección de productos estáticos - En construcción</p>
+        </div>
       </div>
     </section>
   );

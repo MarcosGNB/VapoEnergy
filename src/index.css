@@ -2,13 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-.scrollbar-hide::-webkit-scrollbar {
-  display: none;
-}
-.scrollbar-hide {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-}
 /* Transiciones personalizadas */
 .transition-smooth {
   transition: all 0.3s ease-in-out;
