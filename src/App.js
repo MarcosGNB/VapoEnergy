@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import LayoutHeader from './components/LayoutHeader';
 import HeroSection from './components/HeroSection';
 import ProductsSection from './components/ProductsSection';
+import StaticProductsSection from './components/StaticProductsSection'; // Nueva sección
 import AboutSection from './components/AboutSection';
 import ContactSection from './components/ContactSection';
 import Footer from './components/Footer';
@@ -41,7 +42,15 @@ const App = () => {
           <>
             <HeroSection />
             <ProductsSection />
-            <StaticProductsSection />
+           
+
+
+              {/* Nueva sección estática premium */}
+            <StaticProductsSection 
+              products={allProducts}
+              className="py-16 bg-gradient-to-b from-white to-gray-50"
+            />
+            
             <AboutSection />
             <ContactSection />
 
