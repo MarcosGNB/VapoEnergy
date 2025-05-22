@@ -14,6 +14,8 @@ import trapImg from '../assets/NastyJuiceTrapQueenSalt.png';
 import StargazingImg from '../assets/STARGAZING.png';
 import uvaImg from '../assets/uva.png';
 import wickImg from '../assets/wicked_haze_high_mint_by_nasty_4737_1_f7129ab8602b40e71e3270d3f766816a_20230424092644.png'
+import waka10k from '../assets/waka10k.png'
+import waka36k from '../assets/waka36k.png'
 
 import drag2 from '../assets/grang2.png';
 import captai from '../assets/captain.png';
@@ -32,6 +34,8 @@ import xros from '../assets/xros-pro-vaporesso.png';
 import smoore from '../assets/SMOORE-FEELM-2.0-Image.png';
 import souring1 from '../assets/images (1).png';
 import xlim from '../assets/xlim.png';
+import sk from '../assets/lifesk.png';
+import elfbar40 from '../assets/elfbar40k.png'
 
 
 

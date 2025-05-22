@@ -1,20 +1,28 @@
-import React, { useState, useMemo, useEffect } from 'react';
+import React, { useState, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import ProductCard from './ProductCard';
 
 // Importa todas tus imágenes
 import nastyImg from '../assets/nasty.png';
 import vinciroyal from '../assets/vinci.png';
+import souring from '../assets/suorin-edge.png';
+import souring1 from '../assets/images (1).png';
+import waka10k from '../assets/waka10k.png'
+import waka36k from '../assets/waka36k.png'
+import v120 from '../assets/ignitev120.png'
+import sk from '../assets/lifesk.png';
+import elfbar40 from '../assets/elfbar40k.png'
+import xlim from '../assets/xlim.png'
 // ... importa todas las imágenes necesarias
 
+
 const StaticProductsSection = () => {
-  // Estado para los filtros
   const [activeCategory, setActiveCategory] = useState('todos');
   const [priceRange, setPriceRange] = useState([0, 200]);
   const [searchTerm, setSearchTerm] = useState('');
   const [sortOption, setSortOption] = useState('featured');
+  
 
-  // Todos tus productos (simplificado para el ejemplo)
   const allProducts = [
     {
       id: 1,
@@ -27,7 +35,7 @@ const StaticProductsSection = () => {
       isNew: false
     },
     {
-      id: 16,
+      id: 2,
       name: 'Vincci Royal',
       description: 'Tanque de 50ml',
       price: 80,
@@ -36,10 +44,69 @@ const StaticProductsSection = () => {
       isFeatured: true,
       isNew: true
     },
+    {
+      id: 3,
+      name: 'Souring Air Plus',
+      description: 'Tanque de 50ml',
+      price: 80,
+      image: souring1,
+      category: 'recargables',
+      isFeatured: true,
+      isNew: true
+    },
+    {
+      id: 4,
+      name: 'Waka 10k Puff',
+      description: 'Sandia Menta Frutilla con banana',
+      price: 80,
+      image: waka10k,
+      category: 'descartables',
+      isFeatured: true,
+      isNew: true
+    },
+    {
+      id: 5,
+      name: 'IGNITE V120 PRO BLACK WATERMELON ICE',
+      description: 'PRO BLACK WATERMELON ICE',
+      price: 6.7,
+      image: v120,
+      category: 'descartables',
+      isFeatured: true,
+      isNew: true
+    },
+    {
+      id: 6,
+      name: 'Life POdSK 15.000  ',
+      description: 'Waterberry Frost | Vape Desechable ',
+      price: 8.7,
+      image: sk,
+      category: 'descartables',
+      isFeatured: true,
+      isNew: true
+    },
+     {
+      id: 7,
+      name: 'Elf Bar Ice King 40.000',
+      description: 'Frescura (Ice) ajustable por botón. Pantalla con nivel de líquido y batería. Carga tipo C.',
+      price: 8.7,
+      image: elfbar40,
+      category: 'descartables',
+      isFeatured: true,
+      isNew: true
+    },
+     {
+      id: 8,
+      name: 'Xlim',
+      description: 'Tanque 50 ml y resistente ',
+      price: 8.7,
+      image: xlim,
+      category: 'recargables',
+      isFeatured: true,
+      isNew: true
+    },
     // Agrega todos tus productos aquí
   ];
 
-  // Filtrado avanzado con useMemo para optimización
   const filteredProducts = useMemo(() => {
     return allProducts.filter(product => {
       const matchesCategory = activeCategory === 'todos' || product.category === activeCategory;
@@ -62,7 +129,6 @@ const StaticProductsSection = () => {
     });
   }, [activeCategory, priceRange, searchTerm, sortOption, allProducts]);
 
-  // Categorías disponibles
   const categories = [
     { id: 'todos', name: 'Todos' },
     { id: 'salt', name: 'Esencias' },
@@ -72,7 +138,6 @@ const StaticProductsSection = () => {
     { id: 'otros', name: 'Accesorios' }
   ];
 
-  // Opciones de ordenación
   const sortOptions = [
     { id: 'featured', name: 'Destacados' },
     { id: 'price-asc', name: 'Precio: menor a mayor' },
@@ -81,7 +146,7 @@ const StaticProductsSection = () => {
   ];
 
   return (
-    <section className="py-16 px-4 sm:px-6 bg-gray-50">
+    <section id="productosestaticos" className="py-16 px-4 sm:px-6 bg-gray-50">
       <div className="max-w-7xl mx-auto">
        
         <div className="mb-12 text-center">
@@ -113,10 +178,8 @@ const StaticProductsSection = () => {
           </div>
         </div>
 
-       
         <div className="mb-10">
           <div className="flex flex-wrap items-center justify-between gap-4 mb-6">
-         
             <div className="flex flex-wrap gap-2">
               {categories.map(category => (
                 <motion.button
@@ -135,7 +198,6 @@ const StaticProductsSection = () => {
               ))}
             </div>
 
-         
             <div className="flex items-center gap-2">
               <label htmlFor="sort" className="text-sm font-medium text-gray-700">Ordenar por:</label>
               <select
@@ -151,7 +213,6 @@ const StaticProductsSection = () => {
             </div>
           </div>
 
-       
           <div className="mb-6">
             <div className="flex justify-between mb-2">
               <span className="text-sm font-medium text-gray-700">Rango de precios</span>
@@ -178,14 +239,12 @@ const StaticProductsSection = () => {
           </div>
         </div>
 
-      
         <div className="mb-8">
           <p className="text-gray-600">
             Mostrando <span className="font-bold">{filteredProducts.length}</span> productos
           </p>
         </div>
 
-       
         {filteredProducts.length > 0 ? (
           <motion.div 
             layout
