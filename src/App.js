@@ -41,6 +41,7 @@ const App = () => {
           <>
             <HeroSection />
             <ProductsSection />
+            <StaticProductsSection />
             <AboutSection />
             <ContactSection />
 
