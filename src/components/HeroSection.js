@@ -4,8 +4,11 @@ import React, { useState, useEffect } from 'react';
 import nastyImg from '../assets/nasty.png';
 import nastImg from '../assets/nastyamarillo.png';
 import mangoImg from '../assets/mangp.png';
+import xlim from '../assets/xlim.png';
+import sk from '../assets/lifesk.png';
+import elfbar40 from '../assets/elfbar40k.png'
 
-const images = [nastyImg, nastImg, mangoImg];
+const images = [nastyImg, nastImg, mangoImg,xlim,sk,elfbar40 ];
 
 const HeroSection = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -37,13 +40,7 @@ const HeroSection = () => {
         <div className="md:w-1/2 mb-10 md:mb-0">
           <h1 className="text-4xl md:text-5xl font-bold mb-4">Energiza tu experiencia de vapeo</h1>
           <p className="text-lg mb-8">Descubre los mejores productos premium para una experiencia única</p>
-         <button
-         type="button"
-          onClick={scrollToProducts}
-              className="bg-red-600 hover:bg-red-700 text-white font-bold py-3 px-8 rounded-full transition-colors shadow-lg"
-                  >
-                Ver productos
-        </button>
+       
         </div>
         <div className="md:w-1/2 flex justify-center">
           <div className="relative w-64 h-64 md:w-80 md:h-80">

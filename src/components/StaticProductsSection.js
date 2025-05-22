@@ -7,28 +7,25 @@ import nastyImg from '../assets/nasty.png';
 import vinciroyal from '../assets/vinci.png';
 import souring from '../assets/suorin-edge.png';
 import souring1 from '../assets/images (1).png';
-import waka10k from '../assets/waka10k.png'
-import waka36k from '../assets/waka36k.png'
-import v120 from '../assets/ignitev120.png'
+import waka10k from '../assets/waka10k.png';
+import waka36k from '../assets/waka36k.png';
+import v120 from '../assets/ignitev120.png';
 import sk from '../assets/lifesk.png';
-import elfbar40 from '../assets/elfbar40k.png'
-import xlim from '../assets/xlim.png'
-// ... importa todas las imágenes necesarias
-
+import elfbar40 from '../assets/elfbar40k.png';
+import xlim from '../assets/xlim.png';
 
 const StaticProductsSection = () => {
   const [activeCategory, setActiveCategory] = useState('todos');
-  const [priceRange, setPriceRange] = useState([0, 200]);
+  const [priceRange, setPriceRange] = useState([0, 2000000]);
   const [searchTerm, setSearchTerm] = useState('');
   const [sortOption, setSortOption] = useState('featured');
-  
 
   const allProducts = [
     {
       id: 1,
       name: 'Nasty Juice Sal 30ML Wicked Haze',
       description: 'Sabores: Grosella negra y limonada',
-      price: 80,
+      price: 584000,
       image: nastyImg,
       category: 'salt',
       isFeatured: true,
@@ -38,7 +35,7 @@ const StaticProductsSection = () => {
       id: 2,
       name: 'Vincci Royal',
       description: 'Tanque de 50ml',
-      price: 80,
+      price: 584000,
       image: vinciroyal,
       category: 'recargables',
       isFeatured: true,
@@ -48,7 +45,7 @@ const StaticProductsSection = () => {
       id: 3,
       name: 'Souring Air Plus',
       description: 'Tanque de 50ml',
-      price: 80,
+      price: 584000,
       image: souring1,
       category: 'recargables',
       isFeatured: true,
@@ -58,7 +55,7 @@ const StaticProductsSection = () => {
       id: 4,
       name: 'Waka 10k Puff',
       description: 'Sandia Menta Frutilla con banana',
-      price: 80,
+      price: 584000,
       image: waka10k,
       category: 'descartables',
       isFeatured: true,
@@ -68,7 +65,7 @@ const StaticProductsSection = () => {
       id: 5,
       name: 'IGNITE V120 PRO BLACK WATERMELON ICE',
       description: 'PRO BLACK WATERMELON ICE',
-      price: 6.7,
+      price: 48910,
       image: v120,
       category: 'descartables',
       isFeatured: true,
@@ -76,35 +73,34 @@ const StaticProductsSection = () => {
     },
     {
       id: 6,
-      name: 'Life POdSK 15.000  ',
-      description: 'Waterberry Frost | Vape Desechable ',
-      price: 8.7,
+      name: 'Life POdSK 15.000',
+      description: 'Waterberry Frost | Vape Desechable',
+      price: 63510,
       image: sk,
       category: 'descartables',
       isFeatured: true,
       isNew: true
     },
-     {
+    {
       id: 7,
       name: 'Elf Bar Ice King 40.000',
       description: 'Frescura (Ice) ajustable por botón. Pantalla con nivel de líquido y batería. Carga tipo C.',
-      price: 8.7,
+      price: 63510,
       image: elfbar40,
       category: 'descartables',
       isFeatured: true,
       isNew: true
     },
-     {
+    {
       id: 8,
       name: 'Xlim',
-      description: 'Tanque 50 ml y resistente ',
-      price: 8.7,
+      description: 'Tanque 50 ml y resistente',
+      price: 60000,
       image: xlim,
       category: 'recargables',
       isFeatured: true,
       isNew: true
     },
-    // Agrega todos tus productos aquí
   ];
 
   const filteredProducts = useMemo(() => {
@@ -112,17 +108,17 @@ const StaticProductsSection = () => {
       const matchesCategory = activeCategory === 'todos' || product.category === activeCategory;
       const matchesPrice = product.price >= priceRange[0] && product.price <= priceRange[1];
       const matchesSearch = product.name.toLowerCase().includes(searchTerm.toLowerCase()) || 
-                          product.description.toLowerCase().includes(searchTerm.toLowerCase());
-      
+                            product.description.toLowerCase().includes(searchTerm.toLowerCase());
+
       return matchesCategory && matchesPrice && matchesSearch;
     }).sort((a, b) => {
       switch(sortOption) {
         case 'price-asc': return a.price - b.price;
         case 'price-desc': return b.price - a.price;
         case 'newest': return b.id - a.id;
-        case 'featured': 
-          if(a.isFeatured && !b.isFeatured) return -1;
-          if(!a.isFeatured && b.isFeatured) return 1;
+        case 'featured':
+          if (a.isFeatured && !b.isFeatured) return -1;
+          if (!a.isFeatured && b.isFeatured) return 1;
           return 0;
         default: return 0;
       }
@@ -148,9 +144,9 @@ const StaticProductsSection = () => {
   return (
     <section id="productosestaticos" className="py-16 px-4 sm:px-6 bg-gray-50">
       <div className="max-w-7xl mx-auto">
-       
+
         <div className="mb-12 text-center">
-          <motion.h2 
+          <motion.h2
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
@@ -158,7 +154,7 @@ const StaticProductsSection = () => {
           >
             Explora Nuestra Colección
           </motion.h2>
-          
+
           <div className="max-w-md mx-auto relative">
             <input
               type="text"
@@ -167,10 +163,10 @@ const StaticProductsSection = () => {
               onChange={(e) => setSearchTerm(e.target.value)}
               className="w-full px-6 py-3 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent shadow-sm"
             />
-            <svg 
-              className="absolute right-3 top-3.5 h-5 w-5 text-gray-400" 
-              xmlns="http://www.w3.org/2000/svg" 
-              viewBox="0 0 20 20" 
+            <svg
+              className="absolute right-3 top-3.5 h-5 w-5 text-gray-400"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 20 20"
               fill="currentColor"
             >
               <path fillRule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clipRule="evenodd" />
@@ -216,13 +212,13 @@ const StaticProductsSection = () => {
           <div className="mb-6">
             <div className="flex justify-between mb-2">
               <span className="text-sm font-medium text-gray-700">Rango de precios</span>
-              <span className="text-sm font-medium">${priceRange[0]} - ${priceRange[1]}</span>
+              <span className="text-sm font-medium">₲{priceRange[0].toLocaleString()} - ₲{priceRange[1].toLocaleString()}</span>
             </div>
             <div className="px-4">
               <input
                 type="range"
                 min="0"
-                max="200"
+                max="200000"
                 value={priceRange[0]}
                 onChange={(e) => setPriceRange([parseInt(e.target.value), priceRange[1]])}
                 className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer"
@@ -230,7 +226,7 @@ const StaticProductsSection = () => {
               <input
                 type="range"
                 min="0"
-                max="200"
+                max="200000"
                 value={priceRange[1]}
                 onChange={(e) => setPriceRange([priceRange[0], parseInt(e.target.value)])}
                 className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer mt-2"
@@ -246,7 +242,7 @@ const StaticProductsSection = () => {
         </div>
 
         {filteredProducts.length > 0 ? (
-          <motion.div 
+          <motion.div
             layout
             className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8"
           >
@@ -260,8 +256,8 @@ const StaticProductsSection = () => {
                   exit={{ opacity: 0, scale: 0.9 }}
                   transition={{ duration: 0.3 }}
                 >
-                  <ProductCard 
-                    product={product} 
+                  <ProductCard
+                    product={product}
                     variant={activeCategory === 'todos' ? 'default' : 'category'}
                   />
                 </motion.div>
@@ -269,7 +265,7 @@ const StaticProductsSection = () => {
             </AnimatePresence>
           </motion.div>
         ) : (
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             className="text-center py-20"
