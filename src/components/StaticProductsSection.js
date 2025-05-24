@@ -28,7 +28,7 @@ const StaticProductsSection = () => {
 
   const allProducts = [
     {
-      id: 1,
+      id: 76,
       name: 'Nasty Juice Sal 30ML Wicked Haze',
       description: 'Sabores: Grosella negra y limonada',
       price: 584000,
@@ -38,7 +38,7 @@ const StaticProductsSection = () => {
       isNew: false
     },
     {
-      id: 2,
+      id: 77,
       name: 'Vincci Royal',
       description: 'Tanque de 50ml',
       price: 584000,
@@ -48,7 +48,7 @@ const StaticProductsSection = () => {
       isNew: true
     },
     {
-      id: 3,
+      id: 78,
       name: 'Souring Air Plus',
       description: 'Tanque de 50ml',
       price: 584000,
@@ -58,7 +58,7 @@ const StaticProductsSection = () => {
       isNew: true
     },
     {
-      id: 4,
+      id: 79,
       name: 'Waka 10k Puff',
       description: 'Sandia Menta Frutilla con banana',
       price: 584000,
@@ -68,7 +68,7 @@ const StaticProductsSection = () => {
       isNew: true
     },
     {
-      id: 5,
+      id: 80,
       name: 'IGNITE V120 PRO BLACK WATERMELON ICE',
       description: 'PRO BLACK WATERMELON ICE',
       price: 48910,
@@ -78,7 +78,7 @@ const StaticProductsSection = () => {
       isNew: true
     },
     {
-      id: 6,
+      id: 81,
       name: 'Life POdSK 15.000',
       description: 'Waterberry Frost | Vape Desechable',
       price: 63510,
@@ -88,7 +88,7 @@ const StaticProductsSection = () => {
       isNew: true
     },
     {
-      id: 7,
+      id: 82,
       name: 'Elfbar Ice King 40.000',
       description: 'Frescura (Ice) ajustable por botón. Pantalla con nivel de líquido y batería. Carga tipo C.',
       price: 63510,
@@ -98,7 +98,7 @@ const StaticProductsSection = () => {
       isNew: true
     },
     {
-      id: 8,
+      id: 83,
       name: 'Xlim',
       description: 'Tanque 50 ml y resistente',
       price: 60000,
@@ -108,7 +108,7 @@ const StaticProductsSection = () => {
       isNew: true
     },
     {
-      id: 9,
+      id: 84,
       name: 'Elfbar 30k',
       description: 'Tanque 50 ml y resistente',
       price: 60000,
@@ -118,7 +118,7 @@ const StaticProductsSection = () => {
       isNew: true
     },
     {
-      id: 10,
+      id: 85,
       name: 'Elfbar 40k',
       description: 'Tanque 50 ml y resistente',
       price: 60000,
@@ -128,7 +128,7 @@ const StaticProductsSection = () => {
       isNew: true
     },
     {
-      id: 11,
+      id: 86,
       name: 'Elfbar 30k Watermelon Ice',
       description: 'Tanque 50 ml y resistente',
       price: 60000,
@@ -138,7 +138,7 @@ const StaticProductsSection = () => {
       isNew: true
     },
     {
-      id: 12,
+      id: 87,
       name: 'life Pod',
       description: 'Tanque 50 ml y resistente',
       price: 60000,
@@ -148,7 +148,7 @@ const StaticProductsSection = () => {
       isNew: true
     },
     {
-      id: 13,
+      id: 88,
       name: 'life Pod 10k ',
       description: 'Tanque 50 ml y resistente',
       price: 60000,

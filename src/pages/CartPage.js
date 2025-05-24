@@ -1,10 +1,22 @@
 import React from 'react';
 import { useCart } from '../context/CartContext';
+import { useAuth } from '../context/AuthContext';
+import { useNavigate } from 'react-router-dom';
 
 const CartPage = () => {
   const { cart, removeFromCart, clearCart } = useCart();
+  const { user } = useAuth();
+  const navigate = useNavigate();
 
   const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
+
+  const handleProceedToCheckout = () => {
+    if (!user) {
+      navigate('/login');
+    } else {
+      navigate('/checkout');
+    }
+  };
 
   return (
     <div className="min-h-screen bg-gray-100 py-10 px-4 sm:px-6 lg:px-8">
@@ -51,7 +63,7 @@ const CartPage = () => {
                 </button>
                 <button
                   className="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded"
-                  onClick={() => alert('Función de pago próximamente')}
+                  onClick={handleProceedToCheckout}
                 >
                   Proceder al Pago
                 </button>

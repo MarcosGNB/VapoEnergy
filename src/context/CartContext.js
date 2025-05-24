@@ -37,7 +37,13 @@ export const CartProvider = ({ children }) => {
     setCart([]);
   };
 
-  // Calcular total (opcional: útil para usarlo en distintos componentes)
+  // Obtener la cantidad de un producto por ID
+  const getQuantityById = (id) => {
+    const item = cart.find(item => item.id === id);
+    return item ? item.quantity : 0;
+  };
+
+  // Calcular total
   const getCartTotal = () => {
     return cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
   };
@@ -51,6 +57,7 @@ export const CartProvider = ({ children }) => {
         removeFromCart,
         clearCart,
         getCartTotal,
+        getQuantityById, // <-- Asegúrate de incluirla aquí
       }}
     >
       {children}
