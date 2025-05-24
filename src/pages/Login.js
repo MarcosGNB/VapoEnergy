@@ -3,18 +3,38 @@ import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 
 const Login = () => {
+  const [isRegistering, setIsRegistering] = useState(false);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const { login } = useAuth();
+  const { login, register, loginWithGoogle } = useAuth();
   const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const success = login(email, password);
+
+    if (isRegistering) {
+      const success = register(email, password);
+      if (success) {
+        navigate('/cart');
+      } else {
+        alert('Error al crear cuenta. Intenta con otro correo.');
+      }
+    } else {
+      const success = login(email, password);
+      if (success) {
+        navigate('/cart');
+      } else {
+        alert('Credenciales incorrectas');
+      }
+    }
+  };
+
+  const handleGoogleLogin = async () => {
+    const success = await loginWithGoogle();
     if (success) {
       navigate('/cart');
     } else {
-      alert('Credenciales incorrectas');
+      alert('Error con Google Login');
     }
   };
 
@@ -22,8 +42,9 @@ const Login = () => {
     <div className="flex items-center justify-center min-h-screen bg-gradient-to-br from-gray-900 to-black">
       <div className="bg-gray-900 p-8 rounded-2xl shadow-2xl w-full max-w-md border border-gray-700">
         <h2 className="text-3xl font-extrabold text-teal-500 text-center mb-6 tracking-wider uppercase">
-          Vapo Login
+          {isRegistering ? 'Crear Cuenta' : 'Iniciar Sesión'}
         </h2>
+
         <form onSubmit={handleSubmit}>
           <div className="mb-4">
             <label className="block text-teal-400 mb-1 font-medium">Correo electrónico</label>
@@ -51,10 +72,28 @@ const Login = () => {
             type="submit"
             className="w-full bg-teal-600 hover:bg-teal-700 text-white font-bold py-2 px-4 rounded-lg transition duration-300 shadow-md uppercase tracking-wide"
           >
-            Iniciar sesión
+            {isRegistering ? 'Registrarme' : 'Iniciar sesión'}
           </button>
         </form>
-        <p className="text-center text-sm text-gray-400 mt-6">¿Olvidaste tu contraseña? Próximamente 🔒</p>
+
+        <button
+          onClick={handleGoogleLogin}
+          className="w-full mt-4 bg-white hover:bg-gray-100 text-black font-medium py-2 px-4 rounded-lg shadow-md flex items-center justify-center space-x-2 transition"
+        >
+          <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" alt="Google" className="w-5 h-5" />
+          <span>{isRegistering ? 'Registrarme con Google' : 'Ingresar con Google'}</span>
+        </button>
+
+        <p className="text-center text-sm text-gray-400 mt-6">
+          {isRegistering ? '¿Ya tienes una cuenta?' : '¿No tienes una cuenta?'}{' '}
+          <button
+            type="button"
+            onClick={() => setIsRegistering(!isRegistering)}
+            className="text-teal-400 hover:underline"
+          >
+            {isRegistering ? 'Inicia sesión' : 'Crea una cuenta'}
+          </button>
+        </p>
       </div>
     </div>
   );

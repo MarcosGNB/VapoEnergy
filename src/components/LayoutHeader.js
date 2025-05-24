@@ -12,17 +12,25 @@ const LayoutHeader = () => {
   const navigate = useNavigate();
 
   const handleNavClick = (sectionId) => {
+    const scrollToSection = () => {
+      const element = document.getElementById(sectionId);
+      if (element) {
+        // Compensación específica para sección del carrito
+        const isCartSection = sectionId === 'cart';
+        const yOffset = isCartSection ? -120 : -40;
+        const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
+        window.scrollTo({ top: y, behavior: 'smooth' });
+      }
+    };
+
     if (window.location.pathname !== '/') {
       navigate('/');
-      setTimeout(() => {
-        const element = document.getElementById(sectionId);
-        if (element) element.scrollIntoView({ behavior: 'smooth' });
-      }, 100);
+      setTimeout(scrollToSection, 150);
     } else {
-      const element = document.getElementById(sectionId);
-      if (element) element.scrollIntoView({ behavior: 'smooth' });
+      scrollToSection();
     }
-    setMobileMenuOpen(false); // Cierra menú móvil al navegar
+
+    setMobileMenuOpen(false); // Cierra menú móvil
   };
 
   return (
@@ -66,7 +74,7 @@ const LayoutHeader = () => {
         </button>
       </div>
 
-      {/* Menú móvil desplegable */}
+      {/* Menú móvil */}
       {mobileMenuOpen && (
         <nav className="md:hidden bg-black px-6 py-4 space-y-4">
           <button onClick={() => handleNavClick('home')} className="block w-full text-left hover:text-red-500">Inicio</button>

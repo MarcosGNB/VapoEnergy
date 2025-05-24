@@ -27,9 +27,22 @@ export const CartProvider = ({ children }) => {
     });
   };
 
-  // Eliminar un producto por ID
+  // Eliminar todas las unidades de un producto por ID
   const removeFromCart = (id) => {
     setCart(prevCart => prevCart.filter(item => item.id !== id));
+  };
+
+  // Quitar solo una unidad de un producto
+  const removeOneFromCart = (id) => {
+    setCart(prevCart => {
+      return prevCart
+        .map(item =>
+          item.id === id
+            ? { ...item, quantity: item.quantity - 1 }
+            : item
+        )
+        .filter(item => item.quantity > 0); // Eliminar si queda en 0
+    });
   };
 
   // Vaciar todo el carrito
@@ -48,16 +61,17 @@ export const CartProvider = ({ children }) => {
     return cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
   };
 
-  // Proveer valores
+  // Proveer valores al contexto
   return (
     <CartContext.Provider
       value={{
         cart,
         addToCart,
         removeFromCart,
+        removeOneFromCart, // ✅ Ya incluida aquí
         clearCart,
         getCartTotal,
-        getQuantityById, // <-- Asegúrate de incluirla aquí
+        getQuantityById,
       }}
     >
       {children}
