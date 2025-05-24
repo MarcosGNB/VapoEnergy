@@ -15,7 +15,12 @@ import trapImg from '../assets/NastyJuiceTrapQueenSalt.png';
 import StargazingImg from '../assets/STARGAZING.png';
 import uvaImg from '../assets/uva.png';
 import myntyImg from '../assets/wicked_haze_high_mint_by_nasty_4737_1_f7129ab8602b40e71e3270d3f766816a_20230424092644.png';
-
+import elbar30k from '../assets/elfbar30k.png'
+import elbar40ks from '../assets/elfbar40arandanocaramelo.png'
+import elbar30kbuynow from '../assets/elfbar30ksbuynow.png'
+import elfbar30kwatermelonice from '../assets/elfbar30kwatermelonice.png'
+import lifepodmenta from '../assets/lifepodmenta.png'
+import lifepod10k from '../assets/lifepod10k.png'
 /////////////////////////////////77
 
 import drag2 from '../assets/grang2.png';
@@ -776,7 +781,7 @@ const ProductsSection = () => {
           onClick={() => setCategory('otros')}
           className={`px-4 py-2 rounded-full transition-colors ${category === 'otro' ? 'bg-black text-white' : 'bg-gray-200 hover:bg-gray-300' }`}
           >
-            Otro
+            Accesorios
           </button>
         </div>
         

@@ -11,14 +11,19 @@
   "dependencies": {
     "@tailwindcss/forms": "^0.5.10",
     "autoprefixer": "^10.0.0",
+    "body-parser": "^2.2.0",
+    "cors": "^2.8.5",
+    "express": "^5.1.0",
     "framer-motion": "^12.12.1",
+    "lucide-react": "^0.511.0",
     "postcss": "^8.0.0",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "react-icons": "^5.5.0",
     "react-lazy-load-image-component": "^1.6.3",
-    "react-router-dom": "^6.22.3",
+    "react-router-dom": "^6.30.1",
     "react-scripts": "5.0.0",
+    "stripe": "^18.1.1",
     "tailwind-merge": "^2.4.0",
     "tailwindcss": "^3.4.1",
     "tailwindcss-animate": "^1.0.7"
@@ -34,5 +39,18 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "main": "postcss.config.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MarcosGNB/VapoEnergy.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MarcosGNB/VapoEnergy/issues"
+  },
+  "homepage": "https://github.com/MarcosGNB/VapoEnergy#readme",
+  "description": ""
 }

@@ -1,4 +1,6 @@
 import React from 'react';
+import AddToCartButton from './AddToCartButton';
+
 
 // Imágenes (puedes limpiar los import que no uses en este componente si quieres)
 import nastyImg from '../assets/nasty.png';
@@ -45,6 +47,7 @@ import kitdrag from '../assets/vapodrag.png';
 import fume from '../assets/kit-smoke-vape-pen-22.png';
 import Vovinci from '../assets/voopoo-vinci-ii-pod-kit_9.png';
 
+
 const ProductCard = ({ product }) => {
   return (
     <div className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-shadow">
@@ -56,9 +59,7 @@ const ProductCard = ({ product }) => {
           <span className="text-xl font-bold text-red-600">
             ₲{product.price.toLocaleString('es-PY')}
           </span>
-          <button className="bg-black text-white py-2 px-4 rounded-lg hover:bg-gray-800 transition-colors">
-            Agregar al carrito
-          </button>
+          <AddToCartButton product={product} />
         </div>
       </div>
     </div>

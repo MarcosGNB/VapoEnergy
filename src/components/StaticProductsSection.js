@@ -13,6 +13,12 @@ import v120 from '../assets/ignitev120.png';
 import sk from '../assets/lifesk.png';
 import elfbar40 from '../assets/elfbar40k.png';
 import xlim from '../assets/xlim.png';
+import elbar30k from '../assets/elfbar30k.png'
+import elbar40ks from '../assets/elfbar40arandanocaramelo.png'
+import elbar30kbuynow from '../assets/elfbar30ksbuynow.png'
+import elfbar30kwatermelonice from '../assets/elfbar30kwatermelonice.png'
+import lifepodmenta from '../assets/lifepodmenta.png'
+import lifepod10k from '../assets/lifepod10k.png'
 
 const StaticProductsSection = () => {
   const [activeCategory, setActiveCategory] = useState('todos');
@@ -83,7 +89,7 @@ const StaticProductsSection = () => {
     },
     {
       id: 7,
-      name: 'Elf Bar Ice King 40.000',
+      name: 'Elfbar Ice King 40.000',
       description: 'Frescura (Ice) ajustable por botón. Pantalla con nivel de líquido y batería. Carga tipo C.',
       price: 63510,
       image: elfbar40,
@@ -101,12 +107,64 @@ const StaticProductsSection = () => {
       isFeatured: true,
       isNew: true
     },
+    {
+      id: 9,
+      name: 'Elfbar 30k',
+      description: 'Tanque 50 ml y resistente',
+      price: 60000,
+      image: elbar30k,
+      category: 'descartables',
+      isFeatured: true,
+      isNew: true
+    },
+    {
+      id: 10,
+      name: 'Elfbar 40k',
+      description: 'Tanque 50 ml y resistente',
+      price: 60000,
+      image: elbar40ks,
+      category: 'descartables',
+      isFeatured: true,
+      isNew: true
+    },
+    {
+      id: 11,
+      name: 'Elfbar 30k Watermelon Ice',
+      description: 'Tanque 50 ml y resistente',
+      price: 60000,
+      image: elfbar30kwatermelonice,
+      category: 'descartables',
+      isFeatured: true,
+      isNew: true
+    },
+    {
+      id: 12,
+      name: 'life Pod',
+      description: 'Tanque 50 ml y resistente',
+      price: 60000,
+      image: lifepodmenta,
+      category: 'descartables',
+      isFeatured: true,
+      isNew: true
+    },
+    {
+      id: 13,
+      name: 'life Pod 10k ',
+      description: 'Tanque 50 ml y resistente',
+      price: 60000,
+      image: lifepod10k,
+      category: 'descartables',
+      isFeatured: true,
+      isNew: true
+    },
     
+
   ];
 
   const filteredProducts = useMemo(() => {
     return allProducts.filter(product => {
-      const matchesCategory = activeCategory === 'todos' || product.category === activeCategory;
+      const matchesCategory = activeCategory === 'todos' || product.category.toLowerCase().trim() === activeCategory;
+
       const matchesPrice = product.price >= priceRange[0] && product.price <= priceRange[1];
       const matchesSearch = product.name.toLowerCase().includes(searchTerm.toLowerCase()) || 
                             product.description.toLowerCase().includes(searchTerm.toLowerCase());
