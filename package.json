@@ -2,6 +2,7 @@
   "name": "vapoenergy",
   "version": "1.0.0",
   "private": true,
+  "homepage": ".",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
@@ -40,7 +41,6 @@
       "last 1 safari version"
     ]
   },
-  "main": "postcss.config.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/MarcosGNB/VapoEnergy.git"
@@ -51,6 +51,5 @@
   "bugs": {
     "url": "https://github.com/MarcosGNB/VapoEnergy/issues"
   },
-  "homepage": "https://github.com/MarcosGNB/VapoEnergy#readme",
   "description": ""
 }
