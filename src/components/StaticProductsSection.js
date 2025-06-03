@@ -1,180 +1,40 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import ProductCard from './ProductCard';
-
-// Importa todas tus imágenes
-import nastyImg from '../assets/nasty.png';
-import vinciroyal from '../assets/vinci.png';
-import souring from '../assets/suorin-edge.png';
-import souring1 from '../assets/images (1).png';
-import waka10k from '../assets/waka10k.png';
-import waka36k from '../assets/waka36k.png';
-import v120 from '../assets/ignitev120.png';
-import sk from '../assets/lifesk.png';
-import elfbar40 from '../assets/elfbar40k.png';
-import xlim from '../assets/xlim.png';
-import elbar30k from '../assets/elfbar30k.png'
-import elbar40ks from '../assets/elfbar40arandanocaramelo.png'
-import elbar30kbuynow from '../assets/elfbar30ksbuynow.png'
-import elfbar30kwatermelonice from '../assets/elfbar30kwatermelonice.png'
-import lifepodmenta from '../assets/lifepodmenta.png'
-import lifepod10k from '../assets/lifepod10k.png'
+import axios from 'axios';
 
 const StaticProductsSection = () => {
+  const [products, setProducts] = useState([]);
   const [activeCategory, setActiveCategory] = useState('todos');
   const [priceRange, setPriceRange] = useState([0, 2000000]);
   const [searchTerm, setSearchTerm] = useState('');
   const [sortOption, setSortOption] = useState('featured');
 
-  const allProducts = [
-    {
-      id: 76,
-      name: 'Nasty Juice Sal 30ML Wicked Haze',
-      description: 'Sabores: Grosella negra y limonada',
-      price: 584000,
-      image: nastyImg,
-      category: 'salt',
-      isFeatured: true,
-      isNew: false
-    },
-    {
-      id: 77,
-      name: 'Vincci Royal',
-      description: 'Tanque de 50ml',
-      price: 584000,
-      image: vinciroyal,
-      category: 'recargables',
-      isFeatured: true,
-      isNew: true
-    },
-    {
-      id: 78,
-      name: 'Souring Air Plus',
-      description: 'Tanque de 50ml',
-      price: 584000,
-      image: souring1,
-      category: 'recargables',
-      isFeatured: true,
-      isNew: true
-    },
-    {
-      id: 79,
-      name: 'Waka 10k Puff',
-      description: 'Sandia Menta Frutilla con banana',
-      price: 584000,
-      image: waka10k,
-      category: 'descartables',
-      isFeatured: true,
-      isNew: true
-    },
-    {
-      id: 80,
-      name: 'IGNITE V120 PRO BLACK WATERMELON ICE',
-      description: 'PRO BLACK WATERMELON ICE',
-      price: 48910,
-      image: v120,
-      category: 'descartables',
-      isFeatured: true,
-      isNew: true
-    },
-    {
-      id: 81,
-      name: 'Life POdSK 15.000',
-      description: 'Waterberry Frost | Vape Desechable',
-      price: 63510,
-      image: sk,
-      category: 'descartables',
-      isFeatured: true,
-      isNew: true
-    },
-    {
-      id: 82,
-      name: 'Elfbar Ice King 40.000',
-      description: 'Frescura (Ice) ajustable por botón. Pantalla con nivel de líquido y batería. Carga tipo C.',
-      price: 63510,
-      image: elfbar40,
-      category: 'descartables',
-      isFeatured: true,
-      isNew: true
-    },
-    {
-      id: 83,
-      name: 'Xlim',
-      description: 'Tanque 50 ml y resistente',
-      price: 60000,
-      image: xlim,
-      category: 'recargables',
-      isFeatured: true,
-      isNew: true
-    },
-    {
-      id: 84,
-      name: 'Elfbar 30k',
-      description: 'Tanque 50 ml y resistente',
-      price: 60000,
-      image: elbar30k,
-      category: 'descartables',
-      isFeatured: true,
-      isNew: true
-    },
-    {
-      id: 85,
-      name: 'Elfbar 40k',
-      description: 'Tanque 50 ml y resistente',
-      price: 60000,
-      image: elbar40ks,
-      category: 'descartables',
-      isFeatured: true,
-      isNew: true
-    },
-    {
-      id: 86,
-      name: 'Elfbar 30k Watermelon Ice',
-      description: 'Tanque 50 ml y resistente',
-      price: 60000,
-      image: elfbar30kwatermelonice,
-      category: 'descartables',
-      isFeatured: true,
-      isNew: true
-    },
-    {
-      id: 87,
-      name: 'life Pod',
-      description: 'Tanque 50 ml y resistente',
-      price: 60000,
-      image: lifepodmenta,
-      category: 'descartables',
-      isFeatured: true,
-      isNew: true
-    },
-    {
-      id: 88,
-      name: 'life Pod 10k ',
-      description: 'Tanque 50 ml y resistente',
-      price: 60000,
-      image: lifepod10k,
-      category: 'descartables',
-      isFeatured: true,
-      isNew: true
-    },
-    
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+       const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/products`);
 
-  ];
+        setProducts(res.data);
+      } catch (err) {
+        console.error('Error al cargar productos', err);
+      }
+    };
+    fetchProducts();
+  }, []);
 
   const filteredProducts = useMemo(() => {
-    return allProducts.filter(product => {
+    return products.filter(product => {
       const matchesCategory = activeCategory === 'todos' || product.category.toLowerCase().trim() === activeCategory;
-
       const matchesPrice = product.price >= priceRange[0] && product.price <= priceRange[1];
       const matchesSearch = product.name.toLowerCase().includes(searchTerm.toLowerCase()) || 
                             product.description.toLowerCase().includes(searchTerm.toLowerCase());
-
       return matchesCategory && matchesPrice && matchesSearch;
     }).sort((a, b) => {
       switch(sortOption) {
         case 'price-asc': return a.price - b.price;
         case 'price-desc': return b.price - a.price;
-        case 'newest': return b.id - a.id;
+        case 'newest': return b._id.localeCompare(a._id); // o por fecha si tienes `createdAt`
         case 'featured':
           if (a.isFeatured && !b.isFeatured) return -1;
           if (!a.isFeatured && b.isFeatured) return 1;
@@ -182,7 +42,7 @@ const StaticProductsSection = () => {
         default: return 0;
       }
     });
-  }, [activeCategory, priceRange, searchTerm, sortOption, allProducts]);
+  }, [products, activeCategory, priceRange, searchTerm, sortOption]);
 
   const categories = [
     { id: 'todos', name: 'Todos' },
