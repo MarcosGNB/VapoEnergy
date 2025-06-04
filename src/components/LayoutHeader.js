@@ -1,16 +1,34 @@
 import React, { useState } from 'react';
 import logo from '../assets/vapoenergy-logo.png';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';  // Importa useLocation
 import { useCart } from '../context/CartContext';
-import { useAuth } from '../context/AuthContext'; // 👈 Asegúrate de tener este contexto
+import { useAuth } from '../context/AuthContext'; 
 import { ShoppingCart } from 'lucide-react';
 
 const LayoutHeader = () => {
   const { cart } = useCart();
-  const { user, logout } = useAuth(); // 👈 Contexto de autenticación
+  const { user, logout } = useAuth();
   const totalItems = cart.reduce((acc, item) => acc + item.quantity, 0);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const navigate = useNavigate();
+  const location = useLocation();  // Aquí obtenemos la ruta actual
+
+  // Si la ruta es "/login", no mostramos el header
+  if (location.pathname === '/login') {
+    return null;
+  }
+  if (location.pathname === '/inicio') {
+    return null;
+  }
+  if (location.pathname === '/Productos') {
+    return null;
+  }
+  if (location.pathname === '/Nosotros') {
+    return null;
+  }
+  if (location.pathname === '/Contacto') {
+    return null;
+  }
 
   const handleNavClick = (sectionId) => {
     const scrollToSection = () => {
