@@ -14,10 +14,10 @@ const LayoutHeader = () => {
   const location = useLocation();  // Aquí obtenemos la ruta actual
 
   // Si la ruta es "/login", no mostramos el header
-  if (location.pathname === '/') {
+  if (location.pathname === '/Iniciar Sesion') {
     return null;
   }
-  if (location.pathname === '/Iniciar sesión') {
+  if (location.pathname === '/inicio') {
     return null;
   }
   if (location.pathname === '/Productos') {
@@ -33,7 +33,7 @@ const LayoutHeader = () => {
     return null;
   }
 
-  const handleNavClick = (sectionId) => {
+  function handleNavClick(sectionId) {
     const scrollToSection = () => {
       const element = document.getElementById(sectionId);
       if (element) {
@@ -51,7 +51,7 @@ const LayoutHeader = () => {
     }
 
     setMobileMenuOpen(false);
-  };
+  }
 
   const maskEmail = (email) => {
     const [name, domain] = email.split('@');
