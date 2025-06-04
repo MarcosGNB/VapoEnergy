@@ -14,10 +14,10 @@ const LayoutHeader = () => {
   const location = useLocation();  // Aquí obtenemos la ruta actual
 
   // Si la ruta es "/login", no mostramos el header
-  if (location.pathname === '/login') {
+  if (location.pathname === '/') {
     return null;
   }
-  if (location.pathname === '/inicio') {
+  if (location.pathname === '/Iniciar sesión') {
     return null;
   }
   if (location.pathname === '/Productos') {
@@ -27,6 +27,9 @@ const LayoutHeader = () => {
     return null;
   }
   if (location.pathname === '/Contacto') {
+    return null;
+  }
+  if (location.pathname === '/Carrito') {
     return null;
   }
 
