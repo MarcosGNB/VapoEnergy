@@ -2,12 +2,13 @@ import React, { useState } from 'react';
 import logo from '../assets/vapoenergy-logo.png';
 import { Link, useNavigate } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
+import { useAuth } from '../context/AuthContext'; // 👈 Asegúrate de tener este contexto
 import { ShoppingCart } from 'lucide-react';
 
 const LayoutHeader = () => {
   const { cart } = useCart();
+  const { user, logout } = useAuth(); // 👈 Contexto de autenticación
   const totalItems = cart.reduce((acc, item) => acc + item.quantity, 0);
-
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const navigate = useNavigate();
 
@@ -15,9 +16,7 @@ const LayoutHeader = () => {
     const scrollToSection = () => {
       const element = document.getElementById(sectionId);
       if (element) {
-        // Compensación específica para sección del carrito
-        const isCartSection = sectionId === 'cart';
-        const yOffset = isCartSection ? -120 : -40;
+        const yOffset = sectionId === 'cart' ? -120 : -40;
         const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
         window.scrollTo({ top: y, behavior: 'smooth' });
       }
@@ -30,7 +29,13 @@ const LayoutHeader = () => {
       scrollToSection();
     }
 
-    setMobileMenuOpen(false); // Cierra menú móvil
+    setMobileMenuOpen(false);
+  };
+
+  const maskEmail = (email) => {
+    const [name, domain] = email.split('@');
+    const masked = name.slice(0, 4) + '***';
+    return `${masked}@${domain}`;
   };
 
   return (
@@ -42,7 +47,7 @@ const LayoutHeader = () => {
         </div>
 
         {/* Navegación desktop */}
-        <nav className="hidden md:flex space-x-8 items-center">
+        <nav className="hidden md:flex space-x-6 items-center">
           <button onClick={() => handleNavClick('home')} className="hover:text-red-500 transition-colors">Inicio</button>
           <button onClick={() => handleNavClick('products')} className="hover:text-red-500 transition-colors">Productos</button>
           <button onClick={() => handleNavClick('about')} className="hover:text-red-500 transition-colors">Nosotros</button>
@@ -56,6 +61,16 @@ const LayoutHeader = () => {
               </span>
             )}
           </Link>
+
+          {/* Usuario autenticado */}
+          {user ? (
+            <div className="flex items-center space-x-2">
+              <span className="text-sm italic">{maskEmail(user.email)}</span>
+              <button onClick={logout} className="text-red-400 hover:text-red-600 text-sm">Cerrar sesión</button>
+            </div>
+          ) : (
+            <Link to="/login" className="text-sm text-red-400 hover:text-red-600">Iniciar sesión</Link>
+          )}
         </nav>
 
         {/* Botón hamburguesa móvil */}
@@ -90,6 +105,14 @@ const LayoutHeader = () => {
               </span>
             )}
           </Link>
+          {user ? (
+            <div className="flex flex-col space-y-2 text-sm">
+              <span className="italic">{maskEmail(user.email)}</span>
+              <button onClick={logout} className="text-red-400 hover:text-red-600 text-left">Cerrar sesión</button>
+            </div>
+          ) : (
+            <Link to="/login" className="text-sm text-red-400 hover:text-red-600 block">Iniciar sesión</Link>
+          )}
         </nav>
       )}
     </header>

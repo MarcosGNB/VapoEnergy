@@ -8,33 +8,29 @@ const Login = () => {
   const [password, setPassword] = useState('');
   const { login, register, loginWithGoogle } = useAuth();
   const navigate = useNavigate();
+  const [error, setError] = useState('');
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    setError('');
 
-    if (isRegistering) {
-      const success = register(email, password);
-      if (success) {
-        navigate('/cart');
-      } else {
-        alert('Error al crear cuenta. Intenta con otro correo.');
-      }
+    const action = isRegistering ? register : login;
+    const { success, message } = await action(email, password);
+
+    if (success) {
+      navigate('/cart');
     } else {
-      const success = login(email, password);
-      if (success) {
-        navigate('/cart');
-      } else {
-        alert('Credenciales incorrectas');
-      }
+      setError(message || 'Ocurrió un error');
     }
   };
 
   const handleGoogleLogin = async () => {
-    const success = await loginWithGoogle();
+    setError('');
+    const { success, message } = await loginWithGoogle();
     if (success) {
       navigate('/cart');
     } else {
-      alert('Error con Google Login');
+      setError(message || 'Error con Google');
     }
   };
 
@@ -44,6 +40,8 @@ const Login = () => {
         <h2 className="text-3xl font-extrabold text-teal-500 text-center mb-6 tracking-wider uppercase">
           {isRegistering ? 'Crear Cuenta' : 'Iniciar Sesión'}
         </h2>
+
+        {error && <div className="text-red-400 text-sm mb-4 text-center">{error}</div>}
 
         <form onSubmit={handleSubmit}>
           <div className="mb-4">
@@ -88,7 +86,10 @@ const Login = () => {
           {isRegistering ? '¿Ya tienes una cuenta?' : '¿No tienes una cuenta?'}{' '}
           <button
             type="button"
-            onClick={() => setIsRegistering(!isRegistering)}
+            onClick={() => {
+              setIsRegistering(!isRegistering);
+              setError('');
+            }}
             className="text-teal-400 hover:underline"
           >
             {isRegistering ? 'Inicia sesión' : 'Crea una cuenta'}

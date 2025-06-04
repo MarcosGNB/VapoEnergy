@@ -8,25 +8,31 @@ import {
   signOut,
   onAuthStateChanged
 } from 'firebase/auth';
-import { initializeApp } from 'firebase/app';
+import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
 
-// ⚠️ Reemplaza estos valores con los de tu proyecto en Firebase Console
+// ⚠️ Reemplaza solo si cambiaste los datos en Firebase Console
 const firebaseConfig = {
-  apiKey: 'TU_API_KEY',
-  authDomain: 'TU_AUTH_DOMAIN',
-  projectId: 'TU_PROJECT_ID',
-  appId: 'TU_APP_ID',
+  apiKey: "AIzaSyBPe7UU9fArPpVzgYkfksFc-G9bipW7_qY",
+  authDomain: "vapoenergy-4c824.firebaseapp.com",
+  projectId: "vapoenergy-4c824",
+  storageBucket: "vapoenergy-4c824.appspot.com", // 🔧 corregido
+  messagingSenderId: "749232667899",
+  appId: "1:749232667899:web:aaf5fb7e2ba567ea4a845e",
+  measurementId: "G-NC37DZCRKG"
 };
 
+// Inicializar Firebase
 const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
+const auth = getAuth(app); // 🔧 ESTO FALTABA
+const analytics = getAnalytics(app);
 const googleProvider = new GoogleAuthProvider();
 
 const AuthContext = createContext();
 
 export function AuthProvider({ children }) {
   const [user, setUser] = useState(null);
-  const [loading, setLoading] = useState(true); // Opcional: para controlar el estado inicial
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
@@ -45,7 +51,6 @@ export function AuthProvider({ children }) {
     return () => unsubscribe();
   }, []);
 
-  // 🔐 Iniciar sesión con email/contraseña
   const login = async (email, password) => {
     try {
       await signInWithEmailAndPassword(auth, email, password);
@@ -56,7 +61,6 @@ export function AuthProvider({ children }) {
     }
   };
 
-  // 🆕 Crear cuenta
   const register = async (email, password) => {
     try {
       await createUserWithEmailAndPassword(auth, email, password);
@@ -67,7 +71,6 @@ export function AuthProvider({ children }) {
     }
   };
 
-  // 🔑 Login con Google
   const loginWithGoogle = async () => {
     try {
       await signInWithPopup(auth, googleProvider);
@@ -78,7 +81,6 @@ export function AuthProvider({ children }) {
     }
   };
 
-  // 🔓 Cerrar sesión
   const logout = async () => {
     try {
       await signOut(auth);
@@ -101,10 +103,9 @@ export function AuthProvider({ children }) {
   );
 }
 
-// Hook personalizado para consumir el contexto
 export const useAuth = () => useContext(AuthContext);
 
-// Mapeador de errores de Firebase a mensajes más amigables
+// Mapeador de errores a mensajes amigables
 function mapFirebaseError(error) {
   switch (error.code) {
     case 'auth/user-not-found':

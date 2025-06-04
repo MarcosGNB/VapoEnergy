@@ -7,7 +7,7 @@ const productSchema = new mongoose.Schema({
   image: String,
   category: String,
   isFeatured: Boolean,
-  isNew: Boolean
+  nuevo: Boolean
 });
 
 export default mongoose.model('Product', productSchema);

@@ -18,7 +18,7 @@ router.post('/add', upload.single('image'), async (req, res) => {
     console.log('BODY:', req.body);
     console.log('FILE:', req.file);
 
-    const { name, description, price, category, isFeatured, isNew } = req.body;
+    const { name, description, price, category, isFeatured, nuevo } = req.body;
 
     // Validación mínima
     if (!name || !price || !category || !req.file) {
@@ -36,7 +36,7 @@ router.post('/add', upload.single('image'), async (req, res) => {
       category,
       image,
       isFeatured: isFeatured === 'true', // Convertir string a boolean
-      isNew: isNew === 'true'            // Convertir string a boolean
+      nuevo: nuevo === 'true'            // Convertir string a boolean
     });
 
     console.log('📦 Producto a guardar:', product);
